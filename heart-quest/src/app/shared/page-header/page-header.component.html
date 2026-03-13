@@ -1,0 +1,22 @@
+<header class="top-bar">
+  <div class="profile-row">
+    <div class="avatar" [attr.aria-label]="gameState.playerName()">
+      {{ getInitial(gameState.playerName()) }}
+    </div>
+    <span class="username">{{ gameState.playerName() }}</span>
+  </div>
+  <button type="button" class="logout-btn" (click)="logout()" aria-label="Log out">
+    Logout
+  </button>
+</header>
+<section class="brand-row">
+  <div class="brand">
+    <h2 class="brand-title">HEART QUEST</h2>
+    <img src="assets/heart-girl.png" alt="" class="heart-girl" />
+  </div>
+  @if (!isOnLeaderboard()) {
+    <nav class="nav-links">
+      <a class="link-cta" routerLink="/leaderboard">View Leaderboard</a>
+    </nav>
+  }
+</section>

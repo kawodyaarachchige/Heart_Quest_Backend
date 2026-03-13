@@ -1,0 +1,26 @@
+.section-title {
+  font-family: var(--font-gaming-main);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+.panel-title {
+  font-family: var(--font-gaming-main);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+
+.loading-text {
+  font-family: var(--font-gaming-ui);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}

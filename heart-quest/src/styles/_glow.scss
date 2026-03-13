@@ -1,0 +1,22 @@
+// Reusable page background glow – use on any page with .page-with-glow and .page-glow .page-glow--accent
+.page-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.page-glow--accent {
+  width: 260px;
+  height: 260px;
+  background: var(--accent);
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: page-glow-pulse 5s ease-in-out infinite;
+}
+
+@keyframes page-glow-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}

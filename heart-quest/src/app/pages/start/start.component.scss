@@ -1,0 +1,53 @@
+.start-card {
+  width: min(720px, 100%);
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 2.1rem;
+}
+
+.small {
+  font-size: 0.9rem;
+}
+
+.mono {
+  font-family: var(--font-gaming-retro);
+}
+
+.grid {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.mode-row {
+  display: grid;
+  gap: 8px;
+}
+
+.mode {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+
+.actions {
+  margin-top: 16px;
+}
+
+.note {
+  margin-top: 14px;
+}
+
+.err {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 89, 100, 0.45);
+  background: rgba(255, 89, 100, 0.10);
+}

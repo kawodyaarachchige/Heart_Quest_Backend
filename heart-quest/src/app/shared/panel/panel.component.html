@@ -1,0 +1,6 @@
+<section class="game-panel app-panel" [ngClass]="sectionClass() || ''">
+  @if (title(); as t) {
+    <h2 class="section-title">{{ t }}</h2>
+  }
+  <ng-content />
+</section>

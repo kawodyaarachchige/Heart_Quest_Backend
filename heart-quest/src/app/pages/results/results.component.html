@@ -1,0 +1,80 @@
+<div class="results-page page-content page-with-glow w-100">
+ 
+
+  <app-page-header />
+
+  @if (gameState.lastResult(); as r) {
+    <section class="results-panel game-panel position-relative" style="z-index: 1">
+      <div class="result-banner" [class.result-banner--correct]="r.isCorrect" [class.result-banner--wrong]="!r.isCorrect">
+        <div class="result-banner-icon">
+          @if (r.isCorrect) {
+            <img src="assets/smile-face.png" alt="" class="result-banner-img" />
+          } @else {
+            <img src="assets/sad-face.png" alt="" class="result-banner-img" />
+          }
+        </div>
+        <div class="result-banner-text">
+          @if (r.isCorrect) {
+            <h2 class="result-title">Correct!</h2>
+          } @else {
+            <h2 class="result-title">
+              @switch (r.reason) {
+                @case ('timeout') { Time's up }
+                @case ('skipped') { Skipped }
+                @default { Incorrect }
+              }
+            </h2>
+          }
+          <p class="result-score">
+            Score change: <strong>{{ r.scoreDelta }}</strong> — Total: <strong>{{ gameState.score() }}</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-detail-panel">
+          <h3 class="panel-title">Round result</h3>
+          <div class="detail-rows">
+            <div class="detail-row">
+              <span class="detail-label">Solution</span>
+              <span class="detail-value">{{ r.solution }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Your answer</span>
+              <span class="detail-value">{{ r.givenAnswer ?? '—' }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Carrots hint</span>
+              <span class="detail-value">{{ r.carrots }}</span>
+            </div>
+          </div>
+          <div class="result-actions">
+            <button type="button" class="btn-primary" (click)="nextRound()">Next round</button>
+            <button type="button" class="btn-secondary" (click)="playAgain()">New game</button>
+          </div>
+        </div>
+
+        <div class="leaderboard-panel">
+          <h3 class="panel-title">Top 10</h3>
+          <div class="leaderboard-table">
+            <div class="lb-row lb-row--head">
+              <span>#</span>
+              <span>Player</span>
+              <span class="lb-score">Score</span>
+            </div>
+            @for (e of top; track e.username) {
+              <div class="lb-row" [class.lb-row--me]="e.username === gameState.player()?.username">
+                <span class="lb-rank">{{ $index + 1 }}</span>
+                <span class="lb-player">{{ e.username }}</span>
+                <span class="lb-score">{{ e.bestScore }}</span>
+              </div>
+            }
+          </div>
+          @if (top.length === 0) {
+            <p class="lb-empty">No scores yet.</p>
+          }
+        </div>
+      </div>
+    </section>
+  }
+</div>

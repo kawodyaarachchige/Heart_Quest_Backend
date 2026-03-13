@@ -1,0 +1,246 @@
+.auth-page {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-logo {
+  width: clamp(90px, 24vw, 140px);
+  transition: filter 0.3s ease;
+}
+.auth-logo:hover {
+  filter: drop-shadow(0 0 28px rgba(255, 77, 125, 0.5));
+}
+
+.auth-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+
+  position: relative;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.auth-tab {
+  font-family: var(--font-gaming-ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 10px 24px;
+  border: 2px solid var(--border);
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.auth-tab:first-child {
+  border-radius: 10px 0 0 10px;
+  border-right-width: 1px;
+}
+.auth-tab:last-child {
+  border-radius: 0 10px 10px 0;
+  border-left-width: 1px;
+}
+.auth-tab:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+.auth-tab.active {
+  background: linear-gradient(135deg, rgba(255, 77, 125, 0.2), rgba(1, 1, 1, 0.2));
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255, 77, 125, 0.3), inset 0 0 20px rgba(255, 77, 125, 0.05);
+  z-index: 1;
+}
+
+.welcome {
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-title {
+  font-family: var(--font-gaming-main);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0 0 8px;
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 50%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(255, 77, 125, 0.3);
+}
+
+.motivation {
+  font-family: var(--font-normal);
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.form-section.game-panel {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+  padding: 28px 24px;
+  background: rgba(7, 8, 18, 0.85);
+  border-color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255, 77, 125, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+
+
+.form-section .field {
+  gap: 8px;
+}
+.form-section .field label {
+  font-family: var(--font-gaming-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.input-wrap:focus-within {
+  border-color: var(--accent2);
+ 
+}
+
+.input-wrap input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 14px;
+  color: var(--text);
+
+  outline: none;
+}
+
+.auth-page input[type="text"],
+.auth-page input[type="email"],
+.auth-page input[type="password"] {
+ 
+  border-radius: 12px;
+ 
+  padding: 12px 14px;
+ 
+}
+.auth-page input[type="text"]:focus,
+.auth-page input[type="email"]:focus,
+.auth-page input[type="password"]:focus {
+  border-color: var(--accent2);
+
+  outline: none;
+}
+
+.icon-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+.icon-btn:hover {
+  opacity: 1;
+}
+
+.forgot {
+  font-size: 0.9rem;
+  color: var(--accent2);
+  cursor: pointer;
+  text-align: right;
+  margin: -4px 0 0;
+  transition: text-shadow 0.2s ease;
+}
+.forgot:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 12px rgba(109, 107, 255, 0.5);
+}
+
+.err {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  
+  font-size: 0.9rem;
+  color: var(--accent);
+ 
+}
+
+.form-section .btn-primary.full {
+  margin-top: 6px;
+}
+
+.bottom-link {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 10px 0 0;
+}
+
+.bottom-link a {
+  color: var(--accent2);
+  cursor: pointer;
+  font-weight: 600;
+  transition: text-shadow 0.2s ease, color 0.2s ease;
+}
+.bottom-link a:hover {
+  text-decoration: underline;
+  color: #b8d4ff;
+  text-shadow: 0 0 12px rgba(109, 107, 255, 0.4);
+}
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.checkbox-wrap input {
+  width: auto;
+  accent-color: var(--accent);
+}

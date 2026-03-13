@@ -1,0 +1,15 @@
+{
+  "/uob/heart": {
+    "target": "http://marcconrad.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "warn"
+  },
+  "/api": {
+    "target": "http://localhost:7070",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "warn",
+    "cookieDomainRewrite": "localhost"
+  }
+}

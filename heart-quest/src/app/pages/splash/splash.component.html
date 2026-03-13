@@ -1,0 +1,35 @@
+<div class="splash">
+  <div class="auth-glow auth-glow--1"></div>
+  <section class="logo-section">
+ 
+    <img
+      src="assets/heart-girl.png"
+      alt=""
+      class="heart-girl"
+    />
+    <div class="logo">Heart Quest</div>
+    <p class="tagline">Train Your Brain. Count. Win.</p>
+  </section>
+
+  <section class="loader-section">
+    <div class="loader-wrap" [class.done]="loadingDone()">
+      @for (i of hearts; track i) {
+        <img
+          src="assets/heart-icon.png"
+          alt=""
+          class="heart-icon"
+          [style.animation-delay]="(i * 120) + 'ms'"
+        />
+      }
+    </div>
+    <p class="loader-message">{{ loaderMessage() }}</p>
+  </section>
+
+  <section class="start-section">
+    @if (showStartButton()) {
+      <button type="button" class="btn-start" (click)="tapToStart()">
+        Tap to Start
+      </button>
+    }
+  </section>
+</div>

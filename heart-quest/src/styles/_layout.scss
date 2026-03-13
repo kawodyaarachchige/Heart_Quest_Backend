@@ -1,0 +1,15 @@
+// Standard page content wrapper (max-width, padding, min-height)
+.page-content {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px var(--content-padding, 24px);
+  padding-bottom: 48px;
+  min-height: 70vh;
+  box-sizing: border-box;
+}
+
+.page-with-glow {
+  position: relative;
+  overflow: hidden;
+}

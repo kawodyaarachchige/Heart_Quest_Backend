@@ -1,0 +1,243 @@
+@use '../../../styles/custom-theme/mixins' as *;
+
+.home-page {
+  min-height: 60vh;
+}
+
+.session-check {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--muted);
+  font-family: var(--font-gaming-ui);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+
+.stats-card.game-panel {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 48px;
+  padding: 22px 20px;
+  //background: linear-gradient(135deg, var(--accent2), var(--accent));
+  background: linear-gradient(135deg, var(--accent2));
+  border-radius: 16px;
+
+}
+
+.stats-title {
+  font-family: var(--font-gaming-main);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin: 0 0 18px;
+  color: black;
+
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .stats-grid {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .stats-card.game-panel {
+    padding: 28px 24px;
+  }
+
+  .stats-title {
+    margin-bottom: 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .stat {
+    padding: 20px 18px;
+  }
+}
+
+.stat {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 10px 16px;
+  padding: 18px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  align-items: center;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.stat:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 77, 125, 0.15);
+  box-shadow: 0 0 24px rgba(255, 77, 125, 0.08);
+}
+
+.stat-label {
+  grid-column: 1 / -1;
+  font-family: var(--font-gaming-ui);
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.stat-value {
+  grid-row: 2;
+  grid-column: 1;
+  font-family: var(--font-gaming-main);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  align-self: center;
+  line-height: 1.1;
+}
+
+
+
+.stat-icon[src] {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(255, 77, 125, 0.2));
+}
+
+.instructions-panel {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 28px;
+  padding: 22px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--accent2);
+ 
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.instructions-content {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.instructions-actions {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-left: auto;
+}
+
+.instructions-title {
+  font-family: var(--font-gaming-main);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0 0 16px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.instructions-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-family: var(--font-gaming-ui);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.instructions-list li {
+  margin-bottom: 10px;
+}
+
+.instructions-list li:last-child {
+  margin-bottom: 0;
+}
+
+.instructions-list strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.mode-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mode-card.play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: auto;
+  min-width: 200px;
+  max-width: 320px;
+  padding: 18px 32px;
+  border: linear-gradient(135deg, var(--accent2), var(--accent));
+  border-radius: 999px;
+  background: black;
+  color: #fff;
+  font-family: var(--font-gaming-ui);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: play-btn-glow 2.5s ease-in-out infinite;
+}
+
+.mode-card.play-btn:hover {
+  transform: scale(1.05);
+
+  animation: none;
+}
+
+.mode-card.play-btn:active {
+  transform: scale(0.98);
+}
+
+.play-btn-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.play-btn-text {
+  text-transform: uppercase;
+}
+
+@keyframes play-btn-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 6px 24px var(--accent);
+  }
+
+  50% {
+    box-shadow: 0 8px 28px var(--accent2);
+  }
+}

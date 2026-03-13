@@ -1,0 +1,229 @@
+
+.results-panel {
+  background: linear-gradient(135deg, var(--accent2));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px 20px;
+ 
+}
+
+.result-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.675);
+  
+}
+
+
+
+
+.result-banner-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.result-banner-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+
+
+.result-banner-text {
+  min-width: 0;
+}
+
+.result-title {
+  font-family: var(--font-gaming-main);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+
+.result-score {
+  font-family: var(--font-gaming-ui);
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.result-score strong {
+  color: var(--text);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.result-detail-panel {
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.675);
+}
+
+.detail-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.756);
+}
+
+.detail-row:last-of-type {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-family: var(--font-gaming-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.detail-value {
+  font-family: var(--font-gaming-main);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.result-actions .btn-primary {
+  flex: 1;
+  min-width: 120px;
+}
+
+.result-actions .btn-secondary {
+  flex: 0 0 auto;
+}
+
+.leaderboard-panel {
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.675);
+}
+
+.leaderboard-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lb-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 72px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lb-row:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lb-row--head {
+  background: transparent;
+  border: none;
+  padding: 0 14px 8px;
+  font-family: var(--font-gaming-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.lb-row--me {
+  border-color: var(--accent2);
+  background: rgba(0, 0, 0, 0.675);
+  box-shadow: 0 0 20px var(--accent2);
+}
+
+.lb-rank {
+  font-family: var(--font-gaming-ui);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.lb-player {
+  font-family: var(--font-gaming-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.lb-score {
+  text-align: right;
+  font-family: var(--font-gaming-main);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.lb-empty {
+  font-family: var(--font-gaming-ui);
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.link-cta--small {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  border-radius: 10px;
+  border: 2px solid rgba(109, 107, 255, 0.4);
+  background: linear-gradient(135deg, rgba(109, 107, 255, 0.12), rgba(255, 77, 125, 0.08));
+  color: var(--accent2);
+  font-family: var(--font-gaming-ui);
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.link-cta--small:hover {
+  border-color: var(--accent2);
+  box-shadow: 0 0 20px rgba(109, 107, 255, 0.3);
+  transform: scale(1.02);
+  color: var(--accent2);
+}
+
+@media (max-width: 860px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}

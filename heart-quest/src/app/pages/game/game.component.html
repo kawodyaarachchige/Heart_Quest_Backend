@@ -1,0 +1,87 @@
+<div class="game-page page-content page-with-glow w-100">
+  <div class="page-glow page-glow--accent" aria-hidden="true"></div>
+
+  <app-page-header />
+
+  <section class="game-panel position-relative" style="z-index: 1">
+    <header class="game-header">
+      <button type="button" class="back-btn" (click)="goHome()" aria-label="Back to home">
+        <i class="bi bi-arrow-left" aria-hidden="true"></i> Back
+      </button>
+      <span class="mode-badge">{{ gameState.mode() === 'timed' ? 'Time Mode' : 'Practice Mode' }}</span>
+      <div class="header-right">
+        <div class="score-badge">
+          <span class="badge-label">Score</span>
+          <span class="badge-value">{{ gameState.score() }}</span>
+        </div>
+        @if (gameState.mode() === 'timed') {
+          <div class="timer-badge">
+            <span class="badge-label">Time</span>
+            <span class="badge-value">{{ gameState.timeLeftSec() }}s</span>
+          </div>
+        }
+      </div>
+    </header>
+
+    @if (gameState.currentPuzzle(); as puzzle) {
+      <div class="game-grid">
+        <div class="puzzle-area">
+          <div class="puzzle-frame">
+            <img [src]="puzzle.imageDataUrl" alt="Heart puzzle" class="puzzle-image" />
+          </div>
+          <p class="puzzle-hint" [class.puzzle-hint--timeout]="gameState.mode() === 'timed' && gameState.timeLeftSec() === 0">
+            @if (gameState.mode() === 'timed' && gameState.timeLeftSec() === 0) {
+              Time's up!
+            } @else {
+              Hint: {{ puzzle.carrots }}
+            }
+          </p>
+        </div>
+
+        <div class="controls-area">
+          <div class="field">
+            <label for="answer">Your answer</label>
+            <input
+              id="answer"
+              type="number"
+              inputmode="numeric"
+              class="answer-input"
+              [(ngModel)]="answerText"
+              (keyup.enter)="submit()"
+              placeholder="Type or use keypad"
+            />
+          </div>
+
+          <div class="keypad">
+            @for (d of keypadDigits; track d) {
+              <button type="button" class="keypad-key" (click)="pressDigit(d)">{{ d }}</button>
+            }
+            <button type="button" class="keypad-key keypad-skip" (click)="skip()">Skip</button>
+            <button type="button" class="keypad-key keypad-clear" (click)="clear()">Clear</button>
+          </div>
+
+          <div class="actions-row">
+            <button type="button" class="btn-primary" (click)="submit()" [disabled]="answerText.trim().length === 0">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    } @else if (loading) {
+      <div class="state-panel state-loading">
+        <span class="state-spinner"></span>
+        <p>Loading puzzle…</p>
+      </div>
+    } @else if (errorMsg) {
+      <div class="state-panel state-error">
+        <p>{{ errorMsg }}</p>
+        <button type="button" class="btn-primary" (click)="loadNextPuzzle()">Try again</button>
+      </div>
+    } @else {
+      <div class="state-panel state-muted">
+        <p>Round finished.</p>
+        <button type="button" class="btn-primary" (click)="loadNextPuzzle()">Next puzzle</button>
+      </div>
+    }
+  </section>
+</div>

@@ -1,0 +1,12 @@
+// Reusable game-style panel – used on game, results, leaderboard, home, auth
+.game-panel {
+  background: linear-gradient(160deg, rgba(7, 8, 18, 0.92), rgba(12, 16, 34, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px 20px;
+  box-shadow:
+    0 0 0 1px rgba(255, 77, 125, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+}

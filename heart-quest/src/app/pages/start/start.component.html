@@ -1,0 +1,50 @@
+<section class="card start-card">
+  <h1>Heart Quest</h1>
+  <p class="muted">Solve the Heart puzzles. Build streaks. Beat your best score.</p>
+
+  <div class="grid">
+    <div class="field">
+      <label for="username">Username</label>
+      <input id="username" type="text" [(ngModel)]="username" placeholder="e.g., tharushi_01" />
+      <div class="muted small">Login creates a session cookie (virtual identity).</div>
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      <input id="password" type="password" [(ngModel)]="password" placeholder="Choose a password" />
+    </div>
+
+    <div class="field">
+      <label>Mode</label>
+      <div class="mode-row">
+        <label class="mode">
+          <input type="radio" name="mode" [value]="'timed'" [(ngModel)]="mode" />
+          Timed (20s per round)
+        </label>
+        <label class="mode">
+          <input type="radio" name="mode" [value]="'practice'" [(ngModel)]="mode" />
+          Practice (no timer)
+        </label>
+      </div>
+    </div>
+
+    <label class="mode">
+      <input type="checkbox" [(ngModel)]="creatingAccount" />
+      Create new account
+    </label>
+
+    @if (errorMsg) {
+      <div class="err">{{ errorMsg }}</div>
+    }
+  </div>
+
+  <div class="row actions">
+    <button type="button" class="btn-primary" (click)="start()">
+      {{ creatingAccount ? 'Register & Start' : 'Login & Start' }}
+    </button>
+  </div>
+
+  <div class="muted small note">
+    Puzzles are fetched server-side by the Java backend from <span class="mono">marcconrad.com/uob/heart/api.php</span>.
+  </div>
+</section>

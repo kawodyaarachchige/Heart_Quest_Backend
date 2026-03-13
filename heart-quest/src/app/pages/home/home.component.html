@@ -1,0 +1,55 @@
+<div class="home-page page-content page-with-glow">
+  @if (!sessionCheckDone && !gameState.hasActiveGame()) {
+    <div class="session-check">Checking session…</div>
+  } @else if (!gameState.hasActiveGame()) {
+    <div class="session-check">Redirecting to login…</div>
+  } @else {
+  <app-page-header />
+
+  <section class="stats-card game-panel">
+    <h2 class="stats-title">YOUR STATS</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-label">Current Score</span>
+        <span class="stat-value">{{ gameState.score() }}</span>
+        <img src="assets/score.png" alt="" class="stat-icon" />
+      </div>
+      <div class="stat">
+        <span class="stat-label">Highest Score</span>
+        <span class="stat-value">{{ gameState.highestScore() }}</span>
+        <img src="assets/high-score.png" alt="" class="stat-icon" />
+      </div>
+      <div class="stat">
+        <span class="stat-label">Win Streak</span>
+        <span class="stat-value">{{ gameState.streak() }}</span>
+        <img src="assets/win.png" alt="" class="stat-icon" />
+      </div>
+      <div class="stat">
+        <span class="stat-label">Total Games Played</span>
+        <span class="stat-value">{{ gameState.totalGamesPlayed() }}</span>
+        <img src="assets/heart-icon.png" alt="" class="stat-icon" />
+      </div>
+    </div>
+  </section>
+
+  <section class="instructions-panel game-panel">
+    <div class="instructions-content">
+      <h2 class="instructions-title">How to play</h2>
+      <ol class="instructions-list">
+        <li>Tap <strong>Play</strong> to start a round. You’ll see an image with hearts (carrots).</li>
+        <li><strong>Count</strong> how many hearts are in the image.</li>
+        <li>Enter your answer using the <strong>keypad</strong> or type in the answer box.</li>
+        <li>Tap <strong>Submit</strong> when you’re ready, or <strong>Skip</strong> to move to the next puzzle.</li>
+        <li>In <strong>Time mode</strong> you have 20 seconds per round. When time runs out, the round ends.</li>
+        <li>Earn points for correct answers and build your streak. Good luck!</li>
+      </ol>
+    </div>
+    <div class="instructions-actions">
+      <button type="button" class="mode-card play-btn" (click)="startMode('timed')">
+        <img src="assets/play.png" alt="" class="play-btn-icon" />
+        <span class="play-btn-text">Play</span>
+      </button>
+    </div>
+  </section> 
+  }
+</div>
