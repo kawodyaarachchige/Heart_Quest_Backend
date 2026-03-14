@@ -66,8 +66,7 @@ public final class AuthService {
   }
 
   private static String hashPassword(String password) {
-    // Coursework-level hashing (not production): SHA-256 of the password.
-    // In real systems you'd use a slow hash + salt (bcrypt/argon2).
+    // Hashing the password using SHA-256.
     try {
       var md = MessageDigest.getInstance("SHA-256");
       var bytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
