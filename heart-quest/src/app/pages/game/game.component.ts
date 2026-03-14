@@ -72,6 +72,7 @@ export class GameComponent implements OnInit, OnDestroy {
   submit() {
     const value = Number(this.answerText);
     if (!Number.isFinite(value)) return;
+    this.errorMsg = null;
     this.stopTimer();
     const puzzleId = this.gameState.currentPuzzle()?.puzzleId;
     if (!puzzleId) return;
@@ -86,12 +87,13 @@ export class GameComponent implements OnInit, OnDestroy {
           void this.router.navigateByUrl('/auth');
           return;
         }
-        this.errorMsg = 'Submit failed. Try again.';
+        this.errorMsg = err?.error?.error ?? 'Submit failed. Try again.';
       }
     });
   }
 
   skip() {
+    this.errorMsg = null;
     this.stopTimer();
     const puzzleId = this.gameState.currentPuzzle()?.puzzleId;
     if (!puzzleId) return;
@@ -106,7 +108,7 @@ export class GameComponent implements OnInit, OnDestroy {
           void this.router.navigateByUrl('/auth');
           return;
         }
-        this.errorMsg = 'Skip failed. Try again.';
+        this.errorMsg = err?.error?.error ?? 'Skip failed. Try again.';
       }
     });
   }
@@ -151,7 +153,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.api.timeout(puzzleId).subscribe({
       next: (result) => {
         this.gameState.applyServerResult(result);
-        void this.router.navigateByUrl('/results');
+        this.loadNextPuzzle();
       },
       error: (err) => {
         if (err?.status === 401) {
@@ -159,7 +161,7 @@ export class GameComponent implements OnInit, OnDestroy {
           void this.router.navigateByUrl('/auth');
           return;
         }
-        void this.router.navigateByUrl('/results');
+        this.loadNextPuzzle();
       }
     });
   }

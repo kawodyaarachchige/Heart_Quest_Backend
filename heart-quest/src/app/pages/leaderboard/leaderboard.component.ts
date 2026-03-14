@@ -48,12 +48,12 @@ export class LeaderboardComponent implements OnInit {
     return username.trim().charAt(0).toUpperCase();
   }
 
-  getMedal(index: number): string {
-    switch (index) {
-      case 0: return '🥇';
-      case 1: return '🥈';
-      case 2: return '🥉';
-      default: return '';
-    }
+  getMedalImage(place: 1 | 2 | 3): string {
+    const paths: Record<number, string> = {
+      1: 'assets/first-place.png',
+      2: 'assets/second-place.png',
+      3: 'assets/third-place.png',
+    };
+    return paths[place] ?? '';
   }
 }

@@ -25,7 +25,7 @@ export class IdentityService {
   }
 
   private newId(): string {
-    // Prefer a real UUID; fallback is still unique enough for coursework.
+    // Prefer a real UUID; 
     if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
       return crypto.randomUUID();
     }

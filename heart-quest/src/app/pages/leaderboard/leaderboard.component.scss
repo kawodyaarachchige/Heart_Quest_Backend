@@ -14,7 +14,6 @@
   padding: 48px 24px;
 }
 
-// Podium
 .podium-section {
   margin-bottom: 0;
 }
@@ -71,23 +70,20 @@
 }
 
 .podium-place .medal {
-  font-size: 1.75rem;
-  line-height: 1;
+  width: 79px;
+  height: 79px;
+  object-fit: contain;
+  display: block;
 }
 
-.podium-place .avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent2), var(--accent));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-gaming-ui);
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: #fff;
-  box-shadow: 0 0 16px rgba(255, 77, 125, 0.25);
+.podium-place .medal-highlight {
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 24px rgba(255, 77, 125, 0.35));
+  animation: medal-pulse 2s ease-in-out infinite;
+}
+
+@keyframes medal-pulse {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 24px rgba(255, 77, 125, 0.35)); }
+  50% { filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 32px rgba(255, 77, 125, 0.5)); }
 }
 
 .podium-place .name {
@@ -115,7 +111,6 @@
   margin: 0;
 }
 
-// Ranking list
 .ranking-section .section-title {
   margin-bottom: 18px;
 }
@@ -128,7 +123,7 @@
 
 .ranking-row {
   display: grid;
-  grid-template-columns: 36px 40px 1fr 72px;
+  grid-template-columns: 36px 1fr 72px;
   align-items: center;
   gap: 14px;
   padding: 14px 16px;
@@ -155,20 +150,6 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--muted);
-}
-
-.ranking-row .avatar.small {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent2), var(--accent));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-gaming-ui);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: #fff;
 }
 
 .ranking-row .name {
@@ -203,18 +184,8 @@
     min-width: 140px;
     padding: 24px 28px;
   }
-  .podium-place .avatar {
-    width: 56px;
-    height: 56px;
-    font-size: 1.35rem;
-  }
   .ranking-row {
     padding: 16px 18px;
-    grid-template-columns: 40px 44px 1fr 80px;
-  }
-  .ranking-row .avatar.small {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
+    grid-template-columns: 40px 1fr 80px;
   }
 }

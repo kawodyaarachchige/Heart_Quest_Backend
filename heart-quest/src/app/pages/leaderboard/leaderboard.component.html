@@ -13,24 +13,21 @@
         <div class="podium-row">
           @if (getTopThree().length >= 2) {
             <div class="podium-place second">
-              <span class="medal">🥈</span>
-              <div class="avatar">{{ getInitial(getTopThree()[1].username) }}</div>
+              <img class="medal medal-highlight" [src]="getMedalImage(2)" alt="2nd place" />
               <span class="name">{{ getTopThree()[1].username }}</span>
               <span class="score">{{ getTopThree()[1].bestScore }}</span>
             </div>
           }
           @if (getTopThree().length >= 1) {
             <div class="podium-place first">
-              <span class="medal">🥇</span>
-              <div class="avatar">{{ getInitial(getTopThree()[0].username) }}</div>
+              <img class="medal medal-highlight" [src]="getMedalImage(1)" alt="1st place" />
               <span class="name">{{ getTopThree()[0].username }}</span>
               <span class="score">{{ getTopThree()[0].bestScore }}</span>
             </div>
           }
           @if (getTopThree().length >= 3) {
             <div class="podium-place third">
-              <span class="medal">🥉</span>
-              <div class="avatar">{{ getInitial(getTopThree()[2].username) }}</div>
+              <img class="medal medal-highlight" [src]="getMedalImage(3)" alt="3rd place" />
               <span class="name">{{ getTopThree()[2].username }}</span>
               <span class="score">{{ getTopThree()[2].bestScore }}</span>
             </div>
@@ -41,21 +38,19 @@
         }
       </app-panel>
 
-      <app-panel title="Ranking" sectionClass="ranking-section">
-        <div class="ranking-list">
-          @for (e of getRest(); track e.username; let i = $index) {
-            <div class="ranking-row" [class.me]="e.username === gameState.player()?.username">
-              <span class="rank">{{ i + 4 }}</span>
-              <div class="avatar small">{{ getInitial(e.username) }}</div>
-              <span class="name">{{ e.username }}</span>
-              <span class="score">{{ e.bestScore }}</span>
-            </div>
-          }
-        </div>
-        @if (getRest().length === 0 && getTopThree().length > 0) {
-          <p class="ranking-empty">Top 3 shown above.</p>
-        }
-      </app-panel>
+      @if (getRest().length > 0) {
+        <app-panel title="Ranking" sectionClass="ranking-section">
+          <div class="ranking-list">
+            @for (e of getRest(); track e.username; let i = $index) {
+              <div class="ranking-row" [class.me]="e.username === gameState.player()?.username">
+                <span class="rank">{{ i + 4 }}</span>
+                <span class="name">{{ e.username }}</span>
+                <span class="score">{{ e.bestScore }}</span>
+              </div>
+            }
+          </div>
+        </app-panel>
+      }
     }
   </div>
 </div>

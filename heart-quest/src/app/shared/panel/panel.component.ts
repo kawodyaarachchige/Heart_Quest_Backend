@@ -9,8 +9,7 @@ import { NgClass } from '@angular/common';
   styleUrl: './panel.component.scss',
 })
 export class PanelComponent {
-  /** Optional section title (e.g. "Top 3", "Ranking") */
+
   title = input<string>();
-  /** Optional extra class for the section (e.g. "podium-section", "ranking-section") */
   sectionClass = input<string>();
 }

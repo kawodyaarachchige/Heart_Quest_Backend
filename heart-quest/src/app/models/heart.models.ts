@@ -6,7 +6,6 @@ export interface PlayerIdentity {
 }
 
 export interface HeartApiResponse {
-  /** base64-encoded PNG (no data: prefix) */
   question: string;
   solution: number;
   carrots: number;

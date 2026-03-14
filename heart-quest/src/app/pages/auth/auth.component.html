@@ -1,4 +1,4 @@
-<div class="auth-page page-with-glow">
+<div class="auth-page page-with-glow" autocomplete="off">
   <div class="page-glow page-glow--accent" aria-hidden="true"></div>
   
   <div class="logo-wrap">
@@ -22,7 +22,9 @@
           type="text"
           [(ngModel)]="email"
           placeholder="Enter your email"
-          autocomplete="username"
+          autocomplete="off"
+          readonly
+          (focus)="onAuthInputFocus($event)"
         />
       </div>
       <div class="field">
@@ -33,7 +35,9 @@
             [type]="hidePassword ? 'password' : 'text'"
             [(ngModel)]="password"
             placeholder="Enter your password"
-            autocomplete="current-password"
+            autocomplete="off"
+            readonly
+            (focus)="onAuthInputFocus($event)"
           />
           <button type="button" class="icon-btn" (click)="togglePassword()" [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'">
             {{ hidePassword ? '👁' : '👁‍🗨' }}
@@ -65,7 +69,9 @@
           type="text"
           [(ngModel)]="username"
           placeholder="Choose a username"
-          autocomplete="username"
+          autocomplete="off"
+          readonly
+          (focus)="onAuthInputFocus($event)"
         />
       </div>
       <div class="field">
@@ -74,7 +80,9 @@
           id="signup-email"
           type="email"
           placeholder="your@email.com"
-          autocomplete="email"
+          autocomplete="off"
+          readonly
+          (focus)="onAuthInputFocus($event)"
         />
       </div>
       <div class="field">
@@ -85,7 +93,9 @@
             [type]="hideSignupPassword ? 'password' : 'text'"
             [(ngModel)]="password"
             placeholder="Create a password"
-            autocomplete="new-password"
+            autocomplete="off"
+            readonly
+            (focus)="onAuthInputFocus($event)"
           />
           <button type="button" class="icon-btn" (click)="toggleSignupPassword()" [attr.aria-label]="hideSignupPassword ? 'Show password' : 'Hide password'">
             {{ hideSignupPassword ? '👁' : '👁‍🗨' }}
@@ -94,13 +104,20 @@
       </div>
       <div class="field">
         <label for="signup-confirm">Confirm Password</label>
-        <input
-          id="signup-confirm"
-          type="password"
-          [(ngModel)]="confirmPassword"
-          placeholder="Confirm password"
-          autocomplete="new-password"
-        />
+        <div class="input-wrap">
+          <input
+            id="signup-confirm"
+            [type]="hideConfirmPassword ? 'password' : 'text'"
+            [(ngModel)]="confirmPassword"
+            placeholder="Confirm password"
+            autocomplete="off"
+            readonly
+            (focus)="onAuthInputFocus($event)"
+          />
+          <button type="button" class="icon-btn" (click)="toggleConfirmPassword()" [attr.aria-label]="hideConfirmPassword ? 'Show password' : 'Hide password'">
+            {{ hideConfirmPassword ? '👁' : '👁‍🗨' }}
+          </button>
+        </div>
       </div>
       <label class="checkbox-wrap">
         <input type="checkbox" [(ngModel)]="acceptTerms" />

@@ -25,7 +25,6 @@ export class ForgotPasswordComponent {
   message: string | null = null;
   isSuccess: boolean | null = null;
   loading = false;
-  /** 1 = enter username, 2 = set new password, 3 = done */
   step = 1;
 
   constructor(

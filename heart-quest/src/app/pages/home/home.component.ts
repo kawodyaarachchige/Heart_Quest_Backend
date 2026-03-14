@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Always sync with server so we show the current logged-in user's stats (fixes wrong user after logout/login).
     this.api.me().subscribe({
       next: (res) => {
         this.gameState.setPlayer({ id: res.id, username: res.username });

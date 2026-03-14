@@ -172,6 +172,10 @@
   outline: none;
 }
 
+.auth-page input[readonly] {
+  cursor: text;
+}
+
 .icon-btn {
   appearance: none;
   border: none;

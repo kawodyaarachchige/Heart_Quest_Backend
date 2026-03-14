@@ -39,6 +39,11 @@
         </div>
 
         <div class="controls-area">
+          @if (errorMsg) {
+            <div class="game-error">
+              <p>{{ errorMsg }}</p>
+            </div>
+          }
           <div class="field">
             <label for="answer">Your answer</label>
             <input

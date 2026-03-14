@@ -8,6 +8,7 @@ import uob.cis045.heartquest.domain.Puzzle;
 import uob.cis045.heartquest.repository.ScoreRepository;
 
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -107,17 +108,19 @@ public final class GameService {
 
     scoreRepository.upsertBestScore(session.userId(), newScore);
 
-    return Map.of(
-      "isCorrect", isCorrect,
-      "reason", reason,
-      "givenAnswer", givenAnswer,
-      "solution", solution,
-      "carrots", carrots,
-      "scoreDelta", scoreDelta,
-      "scoreTotal", newScore,
-      "streak", nextStreak,
-      "round", session.round()
-    );
+    var result = new HashMap<String, Object>();
+    result.put("isCorrect", isCorrect);
+    result.put("reason", reason);
+    if (givenAnswer != null) {
+      result.put("givenAnswer", givenAnswer);
+    }
+    result.put("solution", solution);
+    result.put("carrots", carrots);
+    result.put("scoreDelta", scoreDelta);
+    result.put("scoreTotal", newScore);
+    result.put("streak", nextStreak);
+    result.put("round", session.round());
+    return result;
   }
 
   private void incrementRound(GameSession session) {

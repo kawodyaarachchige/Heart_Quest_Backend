@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { GameStateService } from '../../services/game-state.service';
@@ -12,7 +12,7 @@ import { PlayerIdentity } from '../../models/heart.models';
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   readonly isLogin = signal(true);
 
   email = '';
@@ -22,6 +22,7 @@ export class AuthComponent {
   acceptTerms = false;
   hidePassword = true;
   hideSignupPassword = true;
+  hideConfirmPassword = true;
   errorMsg: string | null = null;
   loading = false;
 
@@ -31,9 +32,25 @@ export class AuthComponent {
     private readonly gameState: GameStateService,
   ) {}
 
+  ngOnInit(): void {
+    this.clearForm();
+  }
+
   toggleMode(): void {
     this.isLogin.update((v) => !v);
     this.errorMsg = null;
+    this.clearForm();
+  }
+
+  private clearForm(): void {
+    this.email = '';
+    this.username = '';
+    this.password = '';
+    this.confirmPassword = '';
+    this.acceptTerms = false;
+    this.hidePassword = true;
+    this.hideSignupPassword = true;
+    this.hideConfirmPassword = true;
   }
 
   togglePassword(): void {
@@ -42,6 +59,15 @@ export class AuthComponent {
 
   toggleSignupPassword(): void {
     this.hideSignupPassword = !this.hideSignupPassword;
+  }
+
+  toggleConfirmPassword(): void {
+    this.hideConfirmPassword = !this.hideConfirmPassword;
+  }
+
+  /** Prevents password manager from filling on load; user can type after first focus */
+  onAuthInputFocus(e: Event): void {
+    (e.target as HTMLInputElement).removeAttribute('readonly');
   }
 
   login(): void {

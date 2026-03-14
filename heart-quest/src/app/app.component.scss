@@ -1,8 +1,5 @@
 @use '../styles/custom-theme/mixins' as *;
 
-.app-loading {
- 
-}
 
 .app-loading-logo {
   @include gradient-text;
